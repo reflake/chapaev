@@ -10,9 +10,9 @@ const Board = ({setup, left, right}) => {
 
   return (
     <div className='board'>
-      {left}
+      <div className='left'>{left}</div>
       <div ref={container} />
-      {right}
+      <div className='right'>{right}</div>
     </div>
   );
 

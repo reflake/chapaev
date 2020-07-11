@@ -1,17 +1,8 @@
 .player {
-  position: absolute;
-  top: 120px;
   text-align: center;
   width: 0px;
   height: 0px;
-}
-
-.player.left {
-  left: -100px;
-}
-
-.player.right {
-  right: -100px;
+  position: relative;
 }
 
 .player-cover {

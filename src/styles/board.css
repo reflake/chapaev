@@ -2,3 +2,15 @@
   display: inline-block;
   position: relative;
 }
+
+.left .player {
+  top: 120px;
+  position: absolute;
+  left: -100px;
+}
+
+.right .player {
+  top: 120px;
+  position: absolute;
+  right: -100px;
+}
