@@ -1,4 +1,5 @@
 import { MouseConstraint, Events, Vector, Body, Engine, IMouseConstraintDefinition } from 'matter-js';
+import { BreakConstraint } from './CueUtils';
 
 const greenLine = '#90EE90';
 const redLine = '#EA7979';
@@ -30,7 +31,17 @@ class Cue {
 
     };
 
+    console.log(mouseConstraint)
     const beginDragHandler = () => {
+
+      if (mouseConstraint.body.isStatic) {
+
+        this.body = null;
+        BreakConstraint(mouseConstraint);
+
+        return;
+
+      }
 
       this.body = mouseConstraint.body;
       constraint.pointB = { x: 0, y: 0 };
