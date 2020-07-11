@@ -1,30 +1,23 @@
-import { MouseConstraint, Events, Vector, Body } from 'matter-js';
+import { MouseConstraint, Events, Vector, Body, Engine, IMouseConstraintDefinition } from 'matter-js';
 
 const greenLine = '#90EE90';
 const redLine = '#EA7979';
 
 class Cue {
 
-  body: any;
-  strength: number;
-  limit: number;
+  body: any | null;
+  strength: number = 0.05;
+  limit: number = 200;
+  mouseConstraint: MouseConstraint;
 
-  static create(engine, options)
-  {
-    const contraintOptions = {
-      mouse: options.mouse,
-      constraint: {
-        render: { strokeStyle: greenLine, type: 'line' },
-        stiffness: 0
-      }
-    };
-
-    const mouseConstraint = MouseConstraint.create(engine, contraintOptions);
-    const constraint = mouseConstraint.constraint;
+  constructor(mouseConstraint: MouseConstraint, strength: number, limit: number) {
 
     this.body = null;
-    this.strength = options.strength || 0.05;
-    this.limit = options.limit || 200;
+    this.mouseConstraint = mouseConstraint;
+    this.strength = strength;
+    this.limit = limit;
+
+    const constraint = mouseConstraint.constraint;
 
     const draggingHandler = () => {
 
@@ -61,8 +54,25 @@ class Cue {
 
     Events.on(mouseConstraint, 'startdrag', beginDragHandler);
     Events.on(mouseConstraint, 'enddrag', endDragHandler);
+  }
 
-    return mouseConstraint;
+  static create(engine : Engine, options : any)
+  {
+    const contraintOptions = {
+      mouse: options.mouse,
+      constraint: {
+        render: { strokeStyle: greenLine, type: 'line' },
+        stiffness: 0
+      }
+    };
+
+    const mouseConstraint = MouseConstraint.create(engine, contraintOptions as IMouseConstraintDefinition);
+
+    return new Cue(
+      mouseConstraint,
+      options.strength || 0.05,
+      options.limit || 200
+    );
 
   }
 

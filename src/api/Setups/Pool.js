@@ -35,7 +35,7 @@ function createPoolSetup(container) {
   let createChecker = (x, y, radius) =>
 	Bodies.circle(x, y, radius, {
 	  restitution: 0.6,
-	  friction: 0.1,
+	  friction: 800,
 	  render: {
 		  sprite: { xScale: radius / 100.0, yScale: radius / 100.0, texture: 'media/checker.png' }
 	  }
@@ -68,9 +68,9 @@ function createPoolSetup(container) {
 
   // add mouse control
   var mouse = Mouse.create(render.canvas),
-	  mouseConstraint = Cue.create(engine, { mouse });
+	  	cue = Cue.create(engine, { mouse });
 
-  World.add(world, mouseConstraint);
+  World.add(world, cue.mouseConstraint);
 
   // keep the mouse in sync with rendering
   render.mouse = mouse;
