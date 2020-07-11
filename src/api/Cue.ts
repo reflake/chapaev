@@ -6,16 +6,20 @@ const redLine = '#EA7979';
 class Cue {
 
   body: any | null;
-  strength: number = 0.05;
+  strength: number = 0.1;
   limit: number = 200;
   mouseConstraint: MouseConstraint;
 
-  constructor(mouseConstraint: MouseConstraint, strength: number, limit: number) {
+  constructor(mouseConstraint: MouseConstraint, strength?: number, limit?: number) {
 
     this.body = null;
     this.mouseConstraint = mouseConstraint;
-    this.strength = strength;
-    this.limit = limit;
+    
+    if (strength)
+      this.strength = strength;
+
+    if (limit)
+      this.limit = limit;
 
     const constraint = mouseConstraint.constraint;
 
@@ -70,8 +74,8 @@ class Cue {
 
     return new Cue(
       mouseConstraint,
-      options.strength || 0.05,
-      options.limit || 200
+      options.strength,
+      options.limit
     );
 
   }

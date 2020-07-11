@@ -35,7 +35,8 @@ function createPoolSetup(container) {
   let createChecker = (x, y, radius) =>
 	Bodies.circle(x, y, radius, {
 	  restitution: 0.6,
-	  friction: 800,
+		friction: 0.1,
+		frictionAir: 0.02,
 	  render: {
 		  sprite: { xScale: radius / 100.0, yScale: radius / 100.0, texture: 'media/checker.png' }
 	  }
