@@ -9,7 +9,7 @@ const breakIntoLetters = (txt, delta, invert = false) => {
   if (invert) {
 
     return (
-      [...txt].reverse().map((c, i) => <span style={
+      [...txt].reverse().map((c, i) => <span key={i} style={
         {
           transform: `translate(-50%, -50%) rotate(${startDegree + delta * i}deg) `
         }
@@ -19,7 +19,7 @@ const breakIntoLetters = (txt, delta, invert = false) => {
   }
 
   return (
-    [...txt].map((c, i) => <span style={
+    [...txt].map((c, i) => <span key={i} style={
       {
         transform: `translate(-50%, -50%) rotate(${startDegree + delta * i}deg) `
       }
