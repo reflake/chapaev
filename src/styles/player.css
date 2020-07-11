@@ -1,0 +1,60 @@
+.player {
+  position: absolute;
+  top: 120px;
+  text-align: center;
+  width: 0px;
+  height: 0px;
+}
+
+.player.left {
+  left: -100px;
+}
+
+.player.right {
+  right: -100px;
+}
+
+.player-cover {
+  position: absolute;
+  background-color: yellow;
+  border-radius: 64px;
+  width: 128px;
+  height: 128px;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+}
+
+.player-face {
+  width: 128px;
+  height: 128px;
+}
+
+.player-turn {
+  width: 0px;
+  height: 0px;
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  color: yellow;
+  font-weight: 600;
+  font-size: 19pt;
+  word-wrap: none;
+  animation: spin 13s linear infinite;
+}
+
+.player-turn-letter.invert {
+  position: absolute;
+  padding-top: 150px;
+  padding-bottom: 0px;
+}
+
+.player-turn-letter {
+  position: absolute;
+  padding-bottom: 155px;
+}
+
+@keyframes spin {
+
+  100% { transform:rotate(360deg) };
+
+}
