@@ -9,6 +9,7 @@ class Cue {
   body: any | null;
   strength: number = 0.1;
   limit: number = 200;
+  turnCallback: ((e: any) => void) | null = null;
   mouseConstraint: MouseConstraint;
 
   constructor(mouseConstraint: MouseConstraint, strength?: number, limit?: number) {
@@ -31,7 +32,6 @@ class Cue {
 
     };
 
-    console.log(mouseConstraint)
     const beginDragHandler = () => {
 
       if (mouseConstraint.body.isStatic) {
@@ -64,6 +64,11 @@ class Cue {
       Body.setVelocity(this.body, Vector.mult(velocity, this.strength));
       
       Events.off(mouseConstraint, 'mousemove', draggingHandler);
+
+      if (this.turnCallback != null)
+      {
+        this.turnCallback({ velocity });
+      }
 
     };
 

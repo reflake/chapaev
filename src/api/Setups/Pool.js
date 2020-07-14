@@ -1,7 +1,7 @@
-import { Runner, Composites, Common, Composite, Matter, Engine, Render, World, Bodies, Mouse, MouseConstraint, Body, Events } from 'matter-js';
+import { Runner, Composites, Composite, Matter, Engine, Render, World, Bodies, Mouse } from 'matter-js';
 import Cue from '../Cue.ts';
 
-function createPoolSetup(container) {
+function createPoolSetup(container, onMakeTurn) {
 
   // create engine
   var engine = Engine.create(),
@@ -11,13 +11,13 @@ function createPoolSetup(container) {
 
   // create renderer
   var render = Render.create({
-	element: container,
-	engine: engine,
-	options: {
-		width: 1200,
-		height: 900,
-		wireframes: false,
-	}
+		element: container,
+		engine: engine,
+		options: {
+			width: 1200,
+			height: 800,
+			wireframes: false,
+		}
   });
 
   Render.run(render);
@@ -28,7 +28,7 @@ function createPoolSetup(container) {
 
   // add wall bodies
   World.add(world, [
-		Bodies.rectangle(600, 900, 1200, 50.5, { isStatic: true })
+		Bodies.rectangle(600, 700, 1200, 50.5, { isStatic: true })
   ]);
 
 	// add pyramid
@@ -79,7 +79,7 @@ function createPoolSetup(container) {
   // fit the render viewport to the scene
   Render.lookAt(render, {
 	  min: { x: 0, y: 0 },
-	  max: { x: 1200, y: 900 }
+	  max: { x: 1200, y: 800 }
   });
 
   // wrapping using matter-wrap plugin
@@ -90,7 +90,10 @@ function createPoolSetup(container) {
 		  min: { x: render.bounds.min.x - 100, y: render.bounds.min.y },
 		  max: { x: render.bounds.max.x + 100, y: render.bounds.max.y }
 	  };
-  }
+	}
+	
+	// handle callbacks
+	
 
   // context for MatterTools.Demo
   return {
@@ -99,8 +102,8 @@ function createPoolSetup(container) {
 	  render: render,
 	  canvas: render.canvas,
 	  stop: function() {
-		  Matter.Render.stop(render);
-		  Matter.Runner.stop(runner);
+		  Render.stop(render);
+		  Runner.stop(runner);
 	  }
   };
 }

@@ -1,0 +1,58 @@
+.talk {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  width: 200px;
+  transform: translate(30px, -20px);
+}
+
+.talk-cloud {
+  position: relative;
+  animation: appear 0.1s linear;
+}
+
+.talk-cloud-disappear {
+  position: relative;
+  animation: disappear 0.1s linear;
+  opacity: 0;
+}
+
+@keyframes appear {
+  0% { opacity: 0; transform: translate(-20px, 60px) rotateZ(30deg);}
+  100% { opacity: 1; }
+}
+
+@keyframes disappear {
+  0% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-20px, 60px) rotateZ(30deg);}
+}
+
+.talk-bg {
+  text-align: center;
+  display: block;
+  padding: 9px;
+  background: white;
+  border: 2px solid black;
+  border-radius: 12px;
+}
+
+svg.talk-tail {
+  position: absolute;
+  transform: translate(0, 100%);
+  left: 20px;
+  bottom: 3px;
+}
+
+.talk-tail polygon {
+  fill: white;
+}
+
+.talk-tail polyline {
+  fill: none;
+  stroke: black;
+  stroke-width: 2px;
+}
+
+.talk-tail rect {
+  fill: white;
+}

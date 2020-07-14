@@ -1,8 +1,8 @@
 import React from 'react';
 import PlayerFace from './PlayerFace';
 
-export default function Bratiwka({}) {
+export default function Bratiwka(props) {
 
-  return <PlayerFace name='братишка' hisTurn faceImage='media/brawtiska.png' />;
+  return <PlayerFace {...props} name='братишка' faceImage='/media/brawtiska.png' />;
 
 };

@@ -1,7 +1,6 @@
 .player {
-  text-align: center;
-  width: 0px;
-  height: 0px;
+  width: 220px;
+  height: 220px;
   position: relative;
 }
 
@@ -13,6 +12,8 @@
   height: 128px;
   overflow: hidden;
   transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
 }
 
 .player-face {
@@ -23,8 +24,8 @@
 .player-turn {
   width: 0px;
   height: 0px;
-  top: 0px;
-  left: 0px;
+  top: 50%;
+  left: 50%;
   position: absolute;
   color: yellow;
   font-weight: 600;
@@ -42,6 +43,7 @@
 .player-turn-letter {
   position: absolute;
   padding-bottom: 155px;
+  text-align: center;
 }
 
 @keyframes spin {

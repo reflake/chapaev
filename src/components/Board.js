@@ -2,7 +2,7 @@ import '../styles/board.css';
 
 import React, { useEffect, useRef } from 'react';
 
-const Board = ({setup, left, right}) => {
+const Board = ({setup, left, right, turnCallback}) => {
 
   const container = useRef(null);
 
@@ -10,9 +10,9 @@ const Board = ({setup, left, right}) => {
 
   return (
     <div className='board'>
-      <div className='left'>{left}</div>
-      <div ref={container} />
-      <div className='right'>{right}</div>
+      <div className='board-container left'>{left}</div>
+      <div className='board-container' ref={container} />
+      <div className='board-container right'>{right}</div>
     </div>
   );
 
