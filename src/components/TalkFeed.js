@@ -16,7 +16,7 @@ function feedReducer(state = {}, action) {
 
 export default function TalkFeed({ feed }) {
   
-  const [state, dispatch] = useReducer(feedReducer, {message: null, hide: true});
+  const [{message, duration, hide}, dispatch] = useReducer(feedReducer, {message: null, hide: true});
 
   if (!feed) throw 'No feed presented';
 
@@ -25,16 +25,16 @@ export default function TalkFeed({ feed }) {
     let subscription = feed.subscribe((message, duration) => dispatch({type: 'SHOW', payload: { message, duration }}));
     return subscription.unsubscribe;
 
-  }, [dispatch, feed, state.message]);
+  }, [dispatch, feed]);
 
   useEffect(() => {
     
-    let timeout = setTimeout(() => dispatch({type: 'HIDE'}), state.duration);
+    let timeout = setTimeout(() => dispatch({type: 'HIDE'}), duration);
     return () => clearTimeout(timeout);
 
-  }, [dispatch, state.message, state.duration]);
+  }, [dispatch, hide, message, duration]);
 
-  return <Cloud key={state.message} inProp={!state.hide}>{state.message}</Cloud>;
+  return <Cloud key={message} inProp={!hide}>{message}</Cloud>;
 }
 
 export class Feed {

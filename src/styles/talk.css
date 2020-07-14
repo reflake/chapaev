@@ -24,7 +24,7 @@
 
 @keyframes disappear {
   0% { opacity: 1; }
-  100% { opacity: 0; transform: translate(-20px, 60px) rotateZ(30deg);}
+  100% { opacity: 0; transform: translate(10px, 40px) rotateZ(40deg) scale(0);}
 }
 
 .talk-bg {
