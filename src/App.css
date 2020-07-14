@@ -10,3 +10,11 @@ nav li {
 nav a, a:visited {
   color: #cfcfcf;
 }
+
+.hide {
+  opacity: 0;
+}
+
+.layout-cell {
+  display: inline-block;
+}

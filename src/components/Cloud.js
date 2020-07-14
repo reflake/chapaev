@@ -13,7 +13,7 @@ const transitionClassNames = {
   exiting: 'talk-cloud-disappear', exited: 'talk-cloud-disappear',
 }
 
-export default function Cloud({inProp, children}) {
+export default function Cloud({inProp, right, children}) {
   return (
     <Transition unmountOnExit in={inProp} timeout={lifetime}>
       { state => (

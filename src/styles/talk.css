@@ -6,6 +6,15 @@
   transform: translate(30px, -20px);
 }
 
+.right .talk {
+  position: absolute;
+  bottom: 50%;
+  left: auto;
+  right: 50%;
+  width: 200px;
+  transform: translate(-30px, -20px);
+}
+
 .talk-cloud {
   position: relative;
   animation: appear 0.1s linear;
@@ -17,14 +26,34 @@
   opacity: 0;
 }
 
+.right .talk-cloud {
+  animation: appear-right 0.1s linear;
+}
+
+.right .talk-cloud-disappear {
+  position: relative;
+  animation: disappear-right 0.1s linear;
+  opacity: 0;
+}
+
 @keyframes appear {
   0% { opacity: 0; transform: translate(-20px, 60px) rotateZ(30deg);}
+  100% { opacity: 1; }
+}
+
+@keyframes appear-right {
+  0% { opacity: 0; transform: translate(20px, 60px) rotateZ(-30deg);}
   100% { opacity: 1; }
 }
 
 @keyframes disappear {
   0% { opacity: 1; }
   100% { opacity: 0; transform: translate(10px, 40px) rotateZ(40deg) scale(0);}
+}
+
+@keyframes disappear-right {
+  0% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-10px, 40px) rotateZ(-40deg) scale(0);}
 }
 
 .talk-bg {
@@ -41,6 +70,12 @@ svg.talk-tail {
   transform: translate(0, 100%);
   left: 20px;
   bottom: 3px;
+}
+
+.right svg.talk-tail {
+  left: auto;
+  right: 20px;
+  transform: translate(0, 100%) scale(-1, 1);
 }
 
 .talk-tail polygon {

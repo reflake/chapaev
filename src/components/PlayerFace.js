@@ -17,18 +17,20 @@ const breakIntoLetters = (text, delta, invert = false) => {
   )
 };
 
-export default function PlayerFace({children, hideName, name, faceImage, hisTurn = false}) {
+export default function PlayerFace({className, children, hideName, name, faceImage, hisTurn = false}) {
 
   const NAME = name && name.toUpperCase();
 
   return (
     <div className='player'>
-      <div className='player-cover'>
-        <div className='player-face' style={{backgroundImage: `url( ${faceImage} )`}} />
+      <div className={className}>
+        <div className='player-cover'>
+          <div className='player-face' style={{backgroundImage: `url( ${faceImage} )`}} />
+        </div>
+        { <span className={ hisTurn ? 'player-turn' : 'player-turn hide' } >{breakIntoLetters('TAKE YOUR TURN', 10.5)}</span> }
+        { name && <span className={ !hideName ? 'player-turn' : 'player-turn hide' } >{breakIntoLetters(NAME, 10.5, true)}</span> }
+        {children}
       </div>
-      { hisTurn && <span className='player-turn'>{breakIntoLetters('TAKE YOUR TURN', 10.5)}</span> }
-      { !hideName && name && <span className='player-turn'>{breakIntoLetters(NAME, 10.5, true)}</span> }
-      {children}
     </div>
   )
 

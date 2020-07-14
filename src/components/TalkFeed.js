@@ -36,32 +36,3 @@ export default function TalkFeed({ feed }) {
 
   return <Cloud key={message} inProp={!hide}>{message}</Cloud>;
 }
-
-export class Feed {
-
-  constructor() {
-
-    this.listeners = [];
-
-  }
-
-  addMessage(message, duration)
-  {
-    this.listeners.forEach(cb => cb(message, duration))
-  }
-
-  subscribe(callback) {
-
-    this.listeners.push(callback);
-
-    return { unsubscribe: () => this.unsubscribe(callback) };
-
-  }
-
-  unsubscribe(callback) {
-
-    this.listeners.filter(a => a !== callback);
-
-  }
-
-}

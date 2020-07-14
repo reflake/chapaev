@@ -9,10 +9,12 @@ const Board = ({setup, left, right, turnCallback}) => {
   useEffect(() => setup(container.current).stop, [container])
 
   return (
-    <div className='board'>
-      <div className='board-container left'>{left}</div>
-      <div className='board-container' ref={container} />
-      <div className='board-container right'>{right}</div>
+    <div className='board center'>
+        <div className='board-container'>
+          <div className='board-container left'>{left}</div>
+          <div className='board-container' ref={container} />
+          <div className='board-container right'>{right}</div>
+        </div>
     </div>
   );
 

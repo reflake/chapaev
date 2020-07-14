@@ -1,8 +1,7 @@
 .board {
   display: inline-block;
-  position: relative;
 }
 
 .board-container {
-  display: inline-block;
+  display: flex;
 }
